@@ -50,7 +50,7 @@ public class Flowsite {
 		if (res == ER) {
 			System.out.println("CCV Site is working");
 		} else {
-			System.err.println("!!!!!!!CCV Site is not working !!!!!");
+			System.err.println("!!!!!!!CCV Site is not working !!!!!!");
 			mail();
 
 		}
