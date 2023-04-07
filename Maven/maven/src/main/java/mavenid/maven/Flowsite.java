@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 import java.util.Properties;
+import java.util.TimerTask;
 
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -22,7 +24,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class Flowsite {
+public class Flowsite extends TimerTask {
+
+	@Override
+	public void run() {
+
+		System.out.println("Cron started time" + new Date());
+		try {
+			test();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	WebDriver driver;
 
@@ -45,7 +58,7 @@ public class Flowsite {
 		cn.setRequestMethod("HEAD");
 		cn.connect();
 		int res = cn.getResponseCode();
-		int ER = 2001;
+		int ER = 200;
 		// System.out.println("Http response code: " + res);
 		if (res == ER) {
 			System.out.println("CCV Site is working");
@@ -115,5 +128,4 @@ public class Flowsite {
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
-	}
-}
+	}}
