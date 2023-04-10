@@ -26,8 +26,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
+import org.testng.log4testng.Logger;
 
 public class Flowsite extends TimerTask {
+	final Logger logger = Logger.getLogger(Flowsite.class);
 
 	@Override
 	public void run() {
@@ -50,6 +52,8 @@ public class Flowsite extends TimerTask {
 	public void test() throws MalformedURLException, IOException, InterruptedException, MessagingException {
 		System.setProperty("webdriver.chrome.driver", "/Users/macminir01/Documents/Automation/chromedriver");
 		driver = new ChromeDriver();
+		
+		
 
 		// ----------------------------Sites Url------------------------------------//
 
@@ -61,9 +65,9 @@ public class Flowsite extends TimerTask {
 		String Redwood = "http://redwoodjeans.com/";
 		String Altonadock = "https://altonadock.com/";
 		String Bendroff = "https://www.bendorff.es/";
-		String Rieker = "http://rieker-online.fr/";
+		String Rieker = "https://www.rieker-online.fr/";
 		String Stanbridge = "https://www.stanbridge.fr/";
-		String TheKorner = "https://thekorner.fr//";
+		String TheKorner = "https://thekorner.fr/";
 
 		// ----------------------------Sites Url------------------------------------//
 
@@ -263,9 +267,9 @@ public class Flowsite extends TimerTask {
 
 		// TheKorner//
 
-		driver.get(Stanbridge);
+		driver.get(TheKorner);
 		HttpURLConnection cnsr = (HttpURLConnection) new URL(TheKorner).openConnection();
-		cns.setRequestMethod("HEAD");
+		cnsr.setRequestMethod("HEAD");
 		cnsr.connect();
 		int ressr = cnsr.getResponseCode();
 		int ERsr = 200;
@@ -279,81 +283,80 @@ public class Flowsite extends TimerTask {
 			mail();
 
 		}
-
+		
 		driver.quit();
 	}
 
 	public void mail() throws IOException, MessagingException {
-		//Recipient's Mail id
-				String receipientTo = "sasdosthteam@gmail.com";
-				
-				//Sender's Mail id
-				String senderFrom = "aravind@oclocksolutions.com";
-				
-				//Path of PDF test report
-				String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/test-output/emailable-report.html";
-				
-				//Getting System properties
-				Properties prop = System.getProperties();
-				
-				//Setting up smtp host
-				prop.setProperty("mail.smtp.host", "smtp.gmail.com");
-				
-				//Creating a new session for smtp
-				Session session = Session.getDefaultInstance(prop);
-				
-				MimeMessage msg = new MimeMessage(session);
-				
-				//Instance of From Internet address
-				InternetAddress frmAddress = new InternetAddress(senderFrom);
-				
-				//Instance of To Internet address
-				InternetAddress toAddress = new InternetAddress(receipientTo);
-				
-				//Setting up sender's address
-				msg.setFrom(frmAddress);
-				
-				//Setting up recipient's address
-				msg.addRecipient(Message.RecipientType.TO, toAddress);
-				
-				//Setting email's subject
-				msg.setSubject("Test Status Report");
-				
-				BodyPart msgBody = new MimeBodyPart();
-				
-				//Setting email's message body
-				msgBody.setText("This is test report through mail");
-				
-				//Instance of second part
-				Multipart multiPart = new MimeMultipart();
-				
-				multiPart.addBodyPart(msgBody);
-				
-				//Another mail body
-				msgBody = new MimeBodyPart();
-				
-				//Path to pdf file for attachment
-				DataSource source = new FileDataSource(path);
-				
-				DataHandler dataHandler = new DataHandler(source);
-				
-				msgBody.setDataHandler(dataHandler);
-				
-				msgBody.setFileName(path);
-				
-				multiPart.addBodyPart(msgBody);
-				
-				msg.setContent(multiPart);
-				
-				//Authentication and connection establishment to the sender's mail
-				Transport transport = session.getTransport("smtps");
-				transport.connect("smtp.gmail.com",465,"aravind@oclocksolutions.com","Aravind@1234");
-				transport.sendMessage(msg, msg.getAllRecipients());
-				transport.close();
-				
-				System.out.println("Mail Sent");
-				
-				
-			}
+		// Recipient's Mail id
+		String receipientTo = "sasdosthteam@gmail.com";
 
-		}
+		// Sender's Mail id
+		String senderFrom = "aravind@oclocksolutions.com";
+
+		// Path of PDF test report
+		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/test-output/emailable-report.html";
+
+		// Getting System properties
+		Properties prop = System.getProperties();
+
+		// Setting up smtp host
+		prop.setProperty("mail.smtp.host", "smtp.gmail.com");
+
+		// Creating a new session for smtp
+		Session session = Session.getDefaultInstance(prop);
+
+		MimeMessage msg = new MimeMessage(session);
+
+		// Instance of From Internet address
+		InternetAddress frmAddress = new InternetAddress(senderFrom);
+
+		// Instance of To Internet address
+		InternetAddress toAddress = new InternetAddress(receipientTo);
+
+		// Setting up sender's address
+		msg.setFrom(frmAddress);
+
+		// Setting up recipient's address
+		msg.addRecipient(Message.RecipientType.TO, toAddress);
+
+		// Setting email's subject
+		msg.setSubject("Test Status Report");
+
+		BodyPart msgBody = new MimeBodyPart();
+
+		// Setting email's message body
+		msgBody.setText("This is test report through mail - there report site not working");
+
+		// Instance of second part
+		Multipart multiPart = new MimeMultipart();
+
+		multiPart.addBodyPart(msgBody);
+
+		// Another mail body
+		msgBody = new MimeBodyPart();
+
+		// Path to pdf file for attachment
+		DataSource source = new FileDataSource(path);
+
+		DataHandler dataHandler = new DataHandler(source);
+
+		msgBody.setDataHandler(dataHandler);
+
+		msgBody.setFileName(path);
+
+		multiPart.addBodyPart(msgBody);
+
+		msg.setContent(multiPart);
+
+		// Authentication and connection establishment to the sender's mail
+		Transport transport = session.getTransport("smtps");
+		transport.connect("smtp.gmail.com", 465, "aravind@oclocksolutions.com", "Aravind@1234");
+		transport.sendMessage(msg, msg.getAllRecipients());
+		transport.close();
+
+		System.out.println("Mail Sent - Please check your mail");
+
+	}
+
+}
