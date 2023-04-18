@@ -75,7 +75,7 @@ public class Flowsite extends TimerTask {
 		String Mmax = "https://www.monsieur-max.com";
 		String MKT = "https://www.mktstudio.com/fr/";
 		String Lacity = "https://www.lacity.fr/";
-		String Gabor = "https://gabor-shop.fr/";
+		String Gabor = "https://www.gabor-shop.fr/";
 		String Frnch = "https://www.frnch.fr/fr/";
 		String ek = "https://www.ek.fr/en/";
 		String Charles = "https://www.charleslegolf.fr/";
@@ -740,10 +740,9 @@ public class Flowsite extends TimerTask {
 			mail();
 
 		}
-
-	
-        
 		driver.quit();
+		logger.info("The cron time closed - " + java.time.LocalDateTime.now()); 
+
 	}
 
 	// Mail code - added below for mail code
@@ -837,6 +836,7 @@ public class Flowsite extends TimerTask {
 		transport.close();
 
 		System.out.println("Mail Sent - Please check your mail");
+		
 
 	}
 
