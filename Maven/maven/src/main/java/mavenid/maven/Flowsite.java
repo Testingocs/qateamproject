@@ -30,6 +30,7 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class Flowsite extends TimerTask {
+
 	private static final Logger logger = LogManager.getLogger(Flowsite.class);
 
 	@Override
@@ -50,6 +51,8 @@ public class Flowsite extends TimerTask {
 	@Test
 
 	public void test() throws MalformedURLException, IOException, InterruptedException, MessagingException {
+		logger.info("The cron time started - " + java.time.LocalDateTime.now());
+
 		System.setProperty("webdriver.chrome.driver", "/Users/macminir01/Documents/Automation/chromedriver");
 		driver = new ChromeDriver();
 
@@ -741,7 +744,7 @@ public class Flowsite extends TimerTask {
 
 		}
 		driver.quit();
-		logger.info("The cron time closed - " + java.time.LocalDateTime.now()); 
+		logger.info("The cron time closed - " + java.time.LocalDateTime.now());
 
 	}
 
@@ -836,7 +839,6 @@ public class Flowsite extends TimerTask {
 		transport.close();
 
 		System.out.println("Mail Sent - Please check your mail");
-		
 
 	}
 
