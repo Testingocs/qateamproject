@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 import java.util.Properties;
+import java.util.TimerTask;
+
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -21,19 +24,33 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class Flowsite {
+public class Flowsite extends TimerTask {
 
 	private static final Logger logger = LogManager.getLogger(Flowsite.class);
+
+	@Override
+	public void run() {
+
+		try {
+			try {
+				test();
+			} catch (InterruptedException | MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 
 	public void test() throws MalformedURLException, IOException, InterruptedException, MessagingException {
-		logger.info("The cron time started - " + java.time.LocalDateTime.now());
 
 		/*
 		 * System.setProperty("webdriver.chrome.driver",
@@ -43,7 +60,9 @@ public class Flowsite {
 		 * WebDriver driver = new ChromeDriver();
 		 */
 
-		System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver");
+		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
+
 		WebDriver driver = new FirefoxDriver();
 
 		// ----------------------------Sites Url------------------------------------//
@@ -74,7 +93,7 @@ public class Flowsite {
 		String Charles = "https://www.charleslegolf.fr/";
 		String Cadolle = "https://www.cadolle.com/fr/";
 		String Bendorff = "https://www.bendorff.es/fr/";
-		String Altlier = "https://atelierfandb.com/";
+		String Altlier = "https://www.atelierfandb.com/fr/";
 		String Mustang = "https://www.mustang-online.fr/";
 		String Hectier = "https://www.hechter-lingerie.com/";
 		String Lamrathe = "https://www.lamarthe.com/en/";
@@ -86,6 +105,27 @@ public class Flowsite {
 		// ----------------------------Sites Url------------------------------------//
 
 		System.out.println(".............Loading URL one by one .............");
+
+		// Altlier
+
+		driver.get(Altlier);
+		String expectedTitle26 = driver.getTitle();
+		String actualTitle26 = "Atelier F&B | Vêtements et accessoires pour homme";
+		HttpURLConnection cnat = (HttpURLConnection) new URL(Altlier).openConnection();
+		cnat.setRequestMethod("HEAD");
+		cnat.connect();
+		int resat = cnat.getResponseCode();
+		int ERat = 200;
+		// System.out.println("Http response code: " + res);
+		if (resat == ERat && expectedTitle26.equals(actualTitle26)) {
+			Reporter.log("Altlier Site is working");
+			System.out.println("Altlier Site is working");
+		} else {
+			logger.error("Site - Altlier Site is not working");
+			System.err.println("!!!!!!!Altlier Site is not working !!!!!!");
+			mail();
+
+		}
 
 		// ccvmode//
 
@@ -633,27 +673,6 @@ public class Flowsite {
 
 		}
 
-		// Altlier
-
-		driver.get(Altlier);
-		String expectedTitle26 = driver.getTitle();
-		String actualTitle26 = "Atelier F&B | Vêtements et accessoires pour homme";
-		HttpURLConnection cnat = (HttpURLConnection) new URL(Altlier).openConnection();
-		cnat.setRequestMethod("HEAD");
-		cnat.connect();
-		int resat = cnat.getResponseCode();
-		int ERat = 200;
-		// System.out.println("Http response code: " + res);
-		if (resat == ERat && expectedTitle26.equals(actualTitle26)) {
-			Reporter.log("Altlier Site is working");
-			System.out.println("Altlier Site is working");
-		} else {
-			logger.error("Site - Altlier Site is not working");
-			System.err.println("!!!!!!!Altlier Site is not working !!!!!!");
-			mail();
-
-		}
-
 		// Mustang
 
 		driver.get(Mustang);
@@ -853,13 +872,11 @@ public class Flowsite {
 		msg.setFrom(frmAddress);
 
 		// Setting up recipient's address
-		/*
-		 * msg.addRecipient(Message.RecipientType.TO, toAddress);
-		 * msg.addRecipient(Message.RecipientType.CC, CCMAddress);
-		 * msg.addRecipient(Message.RecipientType.CC, CCPAddress);
-		 * msg.addRecipient(Message.RecipientType.CC, CCRAddress);
-		 * msg.addRecipient(Message.RecipientType.CC, CCSAddress);
-		 */
+		msg.addRecipient(Message.RecipientType.TO, toAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCMAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCPAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCRAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCSAddress);
 
 		// Setting email's subject
 		msg.setSubject("Test Status Report");

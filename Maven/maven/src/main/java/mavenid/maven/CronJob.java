@@ -15,10 +15,9 @@ public class CronJob {
 		Timer timer = new Timer();
 		TimerTask task = new Flowsite();
 		timer.schedule(task, 0, 14400000);
-		logger.info("The cron time closed - " + java.time.LocalDateTime.now());
 
 
 	}
-	
+
 
 }
