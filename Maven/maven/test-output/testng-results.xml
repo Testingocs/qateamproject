@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-04-07T15:37:08 IST" name="Default suite" finished-at="2023-04-07T15:37:18 IST" duration-ms="10111">
+  <suite started-at="2023-05-04T12:40:46 IST" name="Default suite" finished-at="2023-05-04T12:41:05 IST" duration-ms="18944">
     <groups>
     </groups>
-    <test started-at="2023-04-07T15:37:08 IST" name="Default test" finished-at="2023-04-07T15:37:18 IST" duration-ms="10111">
-      <class name="mavenid.maven.Flowsite">
-        <test-method signature="test()[pri:0, instance:mavenid.maven.Flowsite@6af93788]" started-at="2023-04-07T15:37:08 IST" name="test" finished-at="2023-04-07T15:37:18 IST" duration-ms="10046" status="PASS">
+    <test started-at="2023-05-04T12:40:46 IST" name="Default test" finished-at="2023-05-04T12:41:05 IST" duration-ms="18944">
+      <class name="mavenid.maven.EntireScreenshot">
+        <test-method signature="testGuru99TakeScreenShot()[pri:0, instance:mavenid.maven.EntireScreenshot@6d3a388c]" started-at="2023-05-04T12:40:46 IST" name="testGuru99TakeScreenShot" finished-at="2023-05-04T12:41:05 IST" duration-ms="18875" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test -->
-      </class> <!-- mavenid.maven.Flowsite -->
+        </test-method> <!-- testGuru99TakeScreenShot -->
+      </class> <!-- mavenid.maven.EntireScreenshot -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
