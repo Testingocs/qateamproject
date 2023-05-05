@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Properties;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -48,6 +49,7 @@ public class Flowsite extends TimerTask {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 
 	public void test() throws MalformedURLException, IOException, InterruptedException, MessagingException {
@@ -64,6 +66,7 @@ public class Flowsite extends TimerTask {
 		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
 
 		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
 		// ----------------------------Sites Url------------------------------------//
 
@@ -873,6 +876,7 @@ public class Flowsite extends TimerTask {
 
 		// Setting up recipient's address
 		msg.addRecipient(Message.RecipientType.TO, toAddress);
+		msg.addRecipient(Message.RecipientType.TO, CCAddress);
 		msg.addRecipient(Message.RecipientType.CC, CCMAddress);
 		msg.addRecipient(Message.RecipientType.CC, CCPAddress);
 		msg.addRecipient(Message.RecipientType.CC, CCRAddress);
