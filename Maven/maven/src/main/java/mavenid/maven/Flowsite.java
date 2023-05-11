@@ -104,9 +104,6 @@ public class Flowsite extends TimerTask {
 		String Pourchet = "https://www.pourchet.com/fr/";
 		String TBC = "https://thebaggingco.com/";
 		String Rivaldi = "https://www.rivaldi.com/";
-
-		// ----------------------------Sites Url------------------------------------//
-
 		System.out.println(".............Loading URL one by one .............");
 
 		// Altlier
@@ -554,7 +551,7 @@ public class Flowsite extends TimerTask {
 
 		driver.get(Gabor);
 		String expectedTitle20 = driver.getTitle();
-		String actualTitle20 = "GABOR I Découvrez notre Nouvelle Collection automne-hiver 2022 - Gabor";
+		String actualTitle20 = "GABOR I Découvrez la nouvelle collection de chaussures Gabor - Gabor";
 		HttpURLConnection cnga = (HttpURLConnection) new URL(Gabor).openConnection();
 		cnga.setRequestMethod("HEAD");
 		cnga.connect();
