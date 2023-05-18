@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -21,7 +20,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -141,8 +139,10 @@ public class Allsitesflowtesting extends TimerTask {
 		String actualTitle31 = "Maison Pourchet | Site officiel - Maroquinerie française";
 		String actualTitle32 = "▷ Bolsos, mochilas y monederos | The Bagging Co®";
 		String actualTitle33 = "RIVALDI - Nouvelle collection Rivaldi pour homme et enfant - Rivaldi";
-		
+
 		System.out.println("The cron time started - " + java.time.LocalDateTime.now());
+
+		logger.info(".............----------------.............");
 
 		System.out.println(".............Loading URL one by one.............");
 
@@ -182,6 +182,8 @@ public class Allsitesflowtesting extends TimerTask {
 			}
 
 		}
+		System.out.println("The cron time ended - " + java.time.LocalDateTime.now());
+
 		logger.info("The cron time ended - " + java.time.LocalDateTime.now());
 
 	}
@@ -197,6 +199,7 @@ public class Allsitesflowtesting extends TimerTask {
 		String receipientCCP = "parthiv@oclocksolutions.com";
 		String receipientCCR = "riyaj@oclocksolutions.com";
 		String receipientCCS = "sathya@oclocksolutions.com";
+		String receipientCCJ = "jayapetrishiya@oclocksolutions.com";
 
 		// Sender's Mail id
 		String senderFrom = "aravind@oclocksolutions.com";
@@ -230,6 +233,8 @@ public class Allsitesflowtesting extends TimerTask {
 		InternetAddress CCRAddress = new InternetAddress(receipientCCR);
 		// Instance of To Internet address
 		InternetAddress CCSAddress = new InternetAddress(receipientCCS);
+		// Instance of To Internet address
+		InternetAddress CCJAddress = new InternetAddress(receipientCCJ);
 
 		// Setting up sender's address
 		msg.setFrom(frmAddress);
@@ -241,6 +246,7 @@ public class Allsitesflowtesting extends TimerTask {
 		msg.addRecipient(Message.RecipientType.CC, CCPAddress);
 		msg.addRecipient(Message.RecipientType.CC, CCRAddress);
 		msg.addRecipient(Message.RecipientType.CC, CCSAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCJAddress);
 
 		// Setting email's subject
 		msg.setSubject("Site not working Status Report");

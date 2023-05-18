@@ -9,17 +9,32 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Extarctlinks {
 	public static void main(String[] args) {
-		System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver");
-		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
+		String Homepage = "https://www.ccvmode.com/";
+		String Listing = "https://www.ccvmode.com/229-nouveautes-homme";
+		String detailpage = "https://www.ccvmode.com/mules/117418-birkenstock-mules-boston-fermees-noires-en-cuir-a-talon-plat-et-boucle-a-ardillon.html#/11-couleurs-noir/22-taille-39";
 
-		WebDriver driver = new FirefoxDriver();
-		driver.get("https://www.ccvmode.com/");
-		driver.manage().window().maximize();
-		List<WebElement> allLinks = driver.findElements(By.tagName("a"));
-		for (WebElement link : allLinks) {
-			System.out.println(link.getAttribute("href"));
+		String[] objc1 = { Homepage, Listing, detailpage };
+
+		for (String i : objc1) {
+			System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
+
+			WebDriver driver = new FirefoxDriver();
+			driver.get(i);
+			System.out.println(
+					"-------------------------------------------" + i + "-------------------------------------------");
+
+			driver.manage().window().maximize();
+			List<WebElement> allLinks = driver.findElements(By.tagName("a"));
+			for (WebElement link : allLinks) {
+				System.out.println(link.getAttribute("href"));
+
+			}
+			System.out.println(
+					"--------------------------------------------------------------------------------------------");
+
+			driver.quit();
 		}
-		driver.quit();
-	}
 
+	}
 }
