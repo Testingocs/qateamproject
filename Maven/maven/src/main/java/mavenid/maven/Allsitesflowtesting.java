@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
 import java.util.Properties;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -14,6 +14,12 @@ import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -21,12 +27,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
-public class Flowtesting extends TimerTask {
+public class Allsitesflowtesting extends TimerTask {
 
 	Flowsite cAlpha = new Flowsite();
-	Allmethods st = new Allmethods();
-
-	private static final Logger logger = LogManager.getLogger(Flowtesting.class);
+	private static final Logger logger = LogManager.getLogger(Allsitesflowtesting.class);
 
 	@Override
 	public void run() {
@@ -35,13 +39,14 @@ public class Flowtesting extends TimerTask {
 			try {
 				test();
 			} catch (InterruptedException | MessagingException e) {
-				
+
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 
 	public void test() throws MalformedURLException, IOException, InterruptedException, MessagingException {
@@ -54,10 +59,12 @@ public class Flowtesting extends TimerTask {
 		 * WebDriver driver = new ChromeDriver();
 		 */
 
-		System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver1");
+
 		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
 
 		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 
 		// ----------------------------Sites Url------------------------------------//
 
@@ -133,6 +140,10 @@ public class Flowtesting extends TimerTask {
 		String actualTitle32 = "▷ Bolsos, mochilas y monederos | The Bagging Co®";
 		String actualTitle33 = "RIVALDI - Nouvelle collection Rivaldi pour homme et enfant - Rivaldi";
 
+		System.out.println("The cron time started - " + java.time.LocalDateTime.now());
+
+		logger.info("The cron time started - " + java.time.LocalDateTime.now());
+
 		System.out.println(".............Loading URL one by one.............");
 
 		String objc1[] = { CCV, Hexagona, Cimarron, Redskins, PeterandMay, Redwood, Altonadock, Bendroff, Rieker,
@@ -165,18 +176,115 @@ public class Flowtesting extends TimerTask {
 			} else {
 				System.err.println(url + " is not working");
 				logger.error(url + " is not working");
-				st.mail();
-				try {
-					st.Pagescreenshots(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				Errormails();
 				System.out.println("Mail method is calling ....");
 
 			}
-			logger.info("The cron time started - " + java.time.LocalDateTime.now());
-          driver.quit();
+
 		}
+		System.out.println("The cron time ended - " + java.time.LocalDateTime.now());
+
+		logger.info("The cron time ended - " + java.time.LocalDateTime.now());
+
 	}
 
+	// Mail code - added below for mail code ------
+
+	public void Errormails() throws IOException, MessagingException {
+
+		// Recipient's Mail id
+		String receipientTo = "aravind@oclocksolutions.com";
+		String receipientCC = "kalaiyarasan.s@oclocksolutions.com";
+		String receipientCCM = "manikandan@oclocksoftware.co.in";
+		String receipientCCP = "parthiv@oclocksolutions.com";
+		String receipientCCR = "riyaj@oclocksolutions.com";
+		String receipientCCS = "sathya@oclocksolutions.com";
+		String receipientCCJ = "jayapetrishiya@oclocksolutions.com";
+
+		// Sender's Mail id
+		String senderFrom = "aravind@oclocksolutions.com";
+
+		// Path of PDF test report
+		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/c:/temp/logs/app.xml";
+
+		// Getting System properties
+		Properties prop = System.getProperties();
+
+		// Setting up smtp host
+		prop.setProperty("mail.smtp.host", "smtp.gmail.com");
+
+		// Creating a new session for smtp
+		Session session = Session.getDefaultInstance(prop);
+
+		MimeMessage msg = new MimeMessage(session);
+
+		// Instance of From Internet address
+		InternetAddress frmAddress = new InternetAddress(senderFrom);
+
+		// Instance of To Internet address
+		InternetAddress toAddress = new InternetAddress(receipientTo);
+		// Instance of To Internet address
+		InternetAddress CCAddress = new InternetAddress(receipientCC);
+		// Instance of To Internet address
+		InternetAddress CCMAddress = new InternetAddress(receipientCCM);
+		// Instance of To Internet address
+		InternetAddress CCPAddress = new InternetAddress(receipientCCP);
+		// Instance of To Internet address
+		InternetAddress CCRAddress = new InternetAddress(receipientCCR);
+		// Instance of To Internet address
+		InternetAddress CCSAddress = new InternetAddress(receipientCCS);
+		// Instance of To Internet address
+		InternetAddress CCJAddress = new InternetAddress(receipientCCJ);
+
+		// Setting up sender's address
+		msg.setFrom(frmAddress);
+
+		// Setting up recipient's address
+		msg.addRecipient(Message.RecipientType.TO, toAddress);
+		msg.addRecipient(Message.RecipientType.TO, CCAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCMAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCPAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCRAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCSAddress);
+		msg.addRecipient(Message.RecipientType.CC, CCJAddress);
+
+		// Setting email's subject
+		msg.setSubject("Site not working Status Report");
+
+		BodyPart msgBody = new MimeBodyPart();
+
+		// Setting email's message body
+
+		msgBody.setText("Hi Team some sites are not working, please check below report. !!!! OPEN IT !!!!");
+
+		// Instance of second part
+		Multipart multiPart = new MimeMultipart();
+
+		multiPart.addBodyPart(msgBody);
+
+		// Another mail body
+		msgBody = new MimeBodyPart();
+
+		// Path to pdf file for attachment
+		DataSource source = new FileDataSource(path);
+
+		DataHandler dataHandler = new DataHandler(source);
+
+		msgBody.setDataHandler(dataHandler);
+
+		msgBody.setFileName(path);
+
+		multiPart.addBodyPart(msgBody);
+
+		msg.setContent(multiPart);
+
+		// Authentication and connection establishment to the sender's mail
+		Transport transport = session.getTransport("smtps");
+		transport.connect("smtp.gmail.com", 465, "aravind@oclocksolutions.com", "Aravind@1234");
+		transport.sendMessage(msg, msg.getAllRecipients());
+		transport.close();
+
+		System.out.println("Mail Sent - Please check your mail");
+
+	}
 }

@@ -28,7 +28,7 @@ import org.openqa.selenium.io.FileHandler;
 public class Allmethods {
 	// Mail code - added below for mail code
 
-	public void mail() throws IOException, MessagingException {
+	public void Errormails() throws IOException, MessagingException {
 		// Recipient's Mail id
 		String receipientTo = "aravind@oclocksolutions.com";
 		String receipientCC = "kalaiyarasan.s@oclocksolutions.com";
