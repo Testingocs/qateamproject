@@ -142,7 +142,7 @@ public class Allsitesflowtesting extends TimerTask {
 
 		System.out.println("The cron time started - " + java.time.LocalDateTime.now());
 
-		logger.info(".............----------------.............");
+		logger.info("The cron time started - " + java.time.LocalDateTime.now());
 
 		System.out.println(".............Loading URL one by one.............");
 
@@ -255,8 +255,7 @@ public class Allsitesflowtesting extends TimerTask {
 
 		// Setting email's message body
 
-		msgBody.setText(
-				"This is Test Report via Mail - this report automated some sites not working, please check below report. OPEN IT !!!!");
+		msgBody.setText("Hi Team some sites are not working, please check below report. !!!! OPEN IT !!!!");
 
 		// Instance of second part
 		Multipart multiPart = new MimeMultipart();
