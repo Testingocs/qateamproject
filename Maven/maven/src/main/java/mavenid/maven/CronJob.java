@@ -10,7 +10,6 @@ public class CronJob {
 	private static final Logger logger = LogManager.getLogger(CronJob.class);
 
 	public static void main(String[] args) {
-		logger.info("The cron time started - " + java.time.LocalDateTime.now());
 		Timer timer = new Timer();
 		TimerTask task = new Allsitesflowtesting();
 		timer.schedule(task, 0, 1800000);

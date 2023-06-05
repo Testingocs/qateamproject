@@ -64,7 +64,7 @@ public class Allsitesflowtesting extends TimerTask {
 		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
 
 		WebDriver driver = new FirefoxDriver();
-		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(700, TimeUnit.SECONDS);
 
 		// ----------------------------Sites Url------------------------------------//
 
@@ -140,9 +140,9 @@ public class Allsitesflowtesting extends TimerTask {
 		String actualTitle32 = "▷ Bolsos, mochilas y monederos | The Bagging Co®";
 		String actualTitle33 = "RIVALDI - Nouvelle collection Rivaldi pour homme et enfant - Rivaldi";
 
-		System.out.println("The cron time started - " + java.time.LocalDateTime.now());
+		System.out.println("-----------------------------------The cron time started - " + java.time.LocalDateTime.now());
 
-		logger.info("The cron time started - " + java.time.LocalDateTime.now());
+		logger.info("The cron time started -" + java.time.LocalDateTime.now());
 
 		System.out.println(".............Loading URL one by one.............");
 
@@ -175,17 +175,17 @@ public class Allsitesflowtesting extends TimerTask {
 				System.out.println(url + " is working");
 			} else {
 				System.err.println(url + " is not working");
-				logger.error(url + " is not working");
+				logger.error("This is site "+ url + " is not working");
 				Errormails();
 				System.out.println("Mail method is calling ....");
 
 			}
 
 		}
-		System.out.println("The cron time ended - " + java.time.LocalDateTime.now());
+		System.out.println("----------------- ----- ---------------The cron time ended " + java.time.LocalDateTime.now());
 
 		logger.info("The cron time ended - " + java.time.LocalDateTime.now());
-
+      driver.quit();
 	}
 
 	// Mail code - added below for mail code ------

@@ -13,7 +13,7 @@ public class Extarctlinks {
 		String Listing = "https://www.ccvmode.com/229-nouveautes-homme";
 		String detailpage = "https://www.ccvmode.com/mules/117418-birkenstock-mules-boston-fermees-noires-en-cuir-a-talon-plat-et-boucle-a-ardillon.html#/11-couleurs-noir/22-taille-39";
 
-		String[] objc1 = { Homepage, Listing, detailpage };
+		String[] objc1 = { Homepage,Listing,detailpage};
 
 		for (String i : objc1) {
 			System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver");
