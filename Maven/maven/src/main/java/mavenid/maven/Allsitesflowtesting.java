@@ -187,7 +187,7 @@ public class Allsitesflowtesting extends TimerTask {
 		logger.info("The cron time ended - " + java.time.LocalDateTime.now());
       driver.quit();
 	}
-
+	
 	// Mail code - added below for mail code ------
 
 	public void Errormails() throws IOException, MessagingException {
@@ -200,12 +200,13 @@ public class Allsitesflowtesting extends TimerTask {
 		String receipientCCR = "riyaj@oclocksolutions.com";
 		String receipientCCS = "sathya@oclocksolutions.com";
 		String receipientCCJ = "jayapetrishiya@oclocksolutions.com";
-
+		
+		
 		// Sender's Mail id
 		String senderFrom = "aravind@oclocksolutions.com";
 
 		// Path of PDF test report
-		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/c:/temp/logs/app.xml";
+		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/C:/temp/logs/app.xml";
 
 		// Getting System properties
 		Properties prop = System.getProperties();

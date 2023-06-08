@@ -1,0 +1,15 @@
+1686226396105	geckodriver	INFO	Listening on 127.0.0.1:33696
+1686226396449	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... //[::1]:9004/" "-foreground" "-no-remote" "-profile" "/var/folders/9g/v84bh5f552q9mbr49m82d6_80000gp/T/rust_mozprofilehsMBlI"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686226397132	Marionette	INFO	Marionette enabled
+1686226397542	Marionette	INFO	Listening on port 49236
+Read port: 49236
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+console.error: "Warning: unrecognized command line flag -remote-allow-origins\n"
+WebDriver BiDi listening on ws://127.0.0.1:9004
+1686226397693	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:9004/devtools/browser/3b07afdf-0011-4762-b21c-aa37f922fb02
+JavaScript error: https://app.store-and-supply.com/themes/dashboard/js/compare/calendar.js, line 339: ReferenceError: translated_dates is not defined
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://app.store-and-supply.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://app.store-and-supply.com."
