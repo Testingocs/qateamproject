@@ -173,7 +173,7 @@ public class Dashboard {
 		// Setting email's message body
 
 		msgBody.setText(
-				"Hi Team \uD83D\uDE00 some sites are not placed order yesterday, please check below report. !!!! OPEN IT \uD83D\uDE00 !!!!");
+				"Hai Team \uD83D\uDE00 some sites are not placed order yesterday, and also for dashboard mismatch value please check below report. !!!! OPEN IT \uD83D\uDE00 !!!!");
 
 		// Instance of second part
 		Multipart multiPart = new MimeMultipart();
