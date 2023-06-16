@@ -10,10 +10,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Extarctlinks {
 	public static void main(String[] args) {
 		String Homepage = "https://www.ccvmode.com/";
-		String Listing = "https://www.ccvmode.com/229-nouveautes-homme";
-		String detailpage = "https://www.ccvmode.com/mules/117418-birkenstock-mules-boston-fermees-noires-en-cuir-a-talon-plat-et-boucle-a-ardillon.html#/11-couleurs-noir/22-taille-39";
+		//String Listing = "https://www.ccvmode.com/229-nouveautes-homme";
+		//String detailpage = "https://www.ccvmode.com/mules/117418-birkenstock-mules-boston-fermees-noires-en-cuir-a-talon-plat-et-boucle-a-ardillon.html#/11-couleurs-noir/22-taille-39";
 
-		String[] objc1 = { Homepage,Listing,detailpage};
+		String[] objc1 = { Homepage};
 
 		for (String i : objc1) {
 			System.setProperty("webdriver.gecko.driver", "/Users/macminir01/Documents/Automation/d/geckodriver");

@@ -51,6 +51,8 @@ public class Dashboard {
 
 		WebElement submit = driver.findElement(By.xpath("//*[@id=\"frmLoginbutton\"]"));
 		submit.click();
+		logger.error(
+				"-------------------Report for yesterday date :" + date + "--------------------------------------");
 
 		for (int i = 1; i <= 3; i++) {
 			String[] Sites = { "seidensticker", "gabor", "gentlemanfarmer", "ccvmode", "mephisto", "mephistode",
@@ -60,9 +62,7 @@ public class Dashboard {
 					"charleslegolf", "mephistoes", "redwood", "electricridesonly", "monsieurmax", "parallele",
 					"mktstudioes", "thekorner", "lamarthe", "thebaggingcode", "cimarronjeans", "hechterlingerie",
 					"pilimpich", "maisonpourchet", "francinel", "emiaparis" };
-			
-			logger.info("-------------------Report for yesterday date :" + date
-					+ "--------------------------------------");
+
 			for (String site : Sites) {
 
 				String xpathExpression = String
@@ -70,7 +70,6 @@ public class Dashboard {
 				WebElement element = driver.findElement(By.xpath(xpathExpression));
 				String OCA = element.getText();
 				System.out.println("Report for yesterday date : " + date);
-				
 
 				System.out.println("Outer value of " + site + ": " + OCA);
 
@@ -112,19 +111,18 @@ public class Dashboard {
 
 		// Recipient's Mail id
 		String receipientTo = "aravind@oclocksolutions.com";
-		String receipientCC = "aravind@oclocksolutions.com";
-		String receipientCCM = "aravind@oclocksolutions.com";
-		String receipientCCP = "aravind@oclocksolutions.com";
-		String receipientCCR = "aravind@oclocksolutions.com";
-		String receipientCCS = "aravind@oclocksolutions.com";
-		String receipientCCJ = "aravind@oclocksolutions.com";
-
+		String receipientCC = "kalaiyarasan.s@oclocksolutions.com";
+		String receipientCCM = "manikandan@oclocksoftware.co.in";
+		String receipientCCP = "parthiv@oclocksolutions.com";
+		String receipientCCR = "riyaj@oclocksolutions.com";
+		String receipientCCS = "sathya@oclocksolutions.com";
+		String receipientCCJ = "jayapetrishiya@oclocksolutions.com";
 
 		// Sender's Mail id
 		String senderFrom = "aravind@oclocksolutions.com";
 
 		// Path of PDF test report
-		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/C:/temp/logs/dashboard.xml";
+		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/c:/temp/logs/dashboard.xml";
 
 		// Getting System properties
 		Properties prop = System.getProperties();
@@ -175,7 +173,7 @@ public class Dashboard {
 		// Setting email's message body
 
 		msgBody.setText(
-				"Hi Team \uD83D\uDE00 some sites are not placed order yesterday, please check below report. !!!! OPEN IT  \uD83D\uDE00 !!!!");
+				"Hi Team \uD83D\uDE00 some sites are not placed order yesterday, please check below report. !!!! OPEN IT \uD83D\uDE00 !!!!");
 
 		// Instance of second part
 		Multipart multiPart = new MimeMultipart();
