@@ -64,7 +64,7 @@ public class Allsitesflowtesting extends TimerTask {
 		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
 
 		WebDriver driver = new FirefoxDriver();
-		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(300, TimeUnit.SECONDS);
 
 		// ----------------------------Sites Url------------------------------------//
 
