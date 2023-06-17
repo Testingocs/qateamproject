@@ -12,7 +12,7 @@ public class CronJob {
 	public static void main(String[] args) {
 		Timer timer = new Timer();
 		TimerTask task = new Allsitesflowtesting();
-		timer.schedule(task, 0, 60000);
+		timer.schedule(task, 0, 180000);
 
 	}
 
