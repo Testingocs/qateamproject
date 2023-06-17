@@ -26,8 +26,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.format.DateTimeFormatter;
 
-public class Everymonthdashboard {
-	private static final Logger logger = LogManager.getLogger(Everymonthdashboard.class);
+public class Dashboard {
+	private static final Logger logger = LogManager.getLogger(Dashboard.class);
 
 	public static void main(String[] args) throws InterruptedException, IOException, MessagingException {
 		LocalDate yesterday = LocalDate.now().minusDays(1);
@@ -51,6 +51,8 @@ public class Everymonthdashboard {
 
 		WebElement submit = driver.findElement(By.xpath("//*[@id=\"frmLoginbutton\"]"));
 		submit.click();
+		logger.error(
+				"-------------------Report for yesterday date :" + date + "--------------------------------------");
 
 		for (int i = 1; i <= 3; i++) {
 			String[] Sites = { "seidensticker", "gabor", "gentlemanfarmer", "ccvmode", "mephisto", "mephistode",
@@ -60,7 +62,6 @@ public class Everymonthdashboard {
 					"charleslegolf", "mephistoes", "redwood", "electricridesonly", "monsieurmax", "parallele",
 					"mktstudioes", "thekorner", "lamarthe", "thebaggingcode", "cimarronjeans", "hechterlingerie",
 					"pilimpich", "maisonpourchet", "francinel", "emiaparis" };
-			
 
 			for (String site : Sites) {
 
@@ -69,8 +70,6 @@ public class Everymonthdashboard {
 				WebElement element = driver.findElement(By.xpath(xpathExpression));
 				String OCA = element.getText();
 				System.out.println("Report for yesterday date : " + date);
-				logger.error("-------------------Report for yesterday date :" + date
-						+ "--------------------------------------");
 
 				System.out.println("Outer value of " + site + ": " + OCA);
 
@@ -117,7 +116,7 @@ public class Everymonthdashboard {
 		String receipientCCP = "parthiv@oclocksolutions.com";
 		String receipientCCR = "riyaj@oclocksolutions.com";
 		String receipientCCS = "sathya@oclocksolutions.com";
-		String receipientCCJ = "aravind@oclocksolutions.com";
+		String receipientCCJ = "jayapetrishiya@oclocksolutions.com";
 
 		// Sender's Mail id
 		String senderFrom = "aravind@oclocksolutions.com";
@@ -174,7 +173,7 @@ public class Everymonthdashboard {
 		// Setting email's message body
 
 		msgBody.setText(
-				"Hi Team \uD83D\uDE00 some sites are not placed order yesterday, please check below report. !!!! OPEN IT \\xF0\\x9F\\x93\\xAC !!!!");
+				"Hi Team \uD83D\uDE00 some sites are not placed order yesterday, please check below report. !!!! OPEN IT \uD83D\uDE00 !!!!");
 
 		// Instance of second part
 		Multipart multiPart = new MimeMultipart();

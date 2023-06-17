@@ -26,6 +26,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.format.DateTimeFormatter;
 
+                                                 // Yesterday report for the dasboard
+
 public class Dashboard {
 	private static final Logger logger = LogManager.getLogger(Dashboard.class);
 
