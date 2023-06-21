@@ -64,7 +64,7 @@ public class Allsitesflowtesting extends TimerTask {
 		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "null");
 
 		WebDriver driver = new FirefoxDriver();
-		driver.manage().timeouts().pageLoadTimeout(300, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(600, TimeUnit.SECONDS);
 
 		// ----------------------------Sites Url------------------------------------//
 
@@ -207,7 +207,7 @@ public class Allsitesflowtesting extends TimerTask {
 		String senderFrom = "aravind@oclocksolutions.com";
 
 		// Path of PDF test report
-		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/c:/temp/logs/app.xml";
+		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/C:/temp/logs/app.xml";
 
 		// Getting System properties
 		Properties prop = System.getProperties();

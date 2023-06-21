@@ -124,7 +124,7 @@ public class Dashboard {
 		String senderFrom = "aravind@oclocksolutions.com";
 
 		// Path of PDF test report
-		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/c:/temp/logs/dashboard.xml";
+		String path = "/Users/macminir01/Documents/Automation/Mavenproject/local/qateamproject/Maven/maven/C:/temp/logs/dashboard.xml";
 
 		// Getting System properties
 		Properties prop = System.getProperties();
